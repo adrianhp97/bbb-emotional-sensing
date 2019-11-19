@@ -117,10 +117,10 @@ class VideoListItem extends Component {
 
   setupFaceApi() {
     Promise.all([
-      faceapi.nets.tinyFaceDetector.loadFromUri('/models'),
-      faceapi.nets.faceLandmark68Net.loadFromUri('/models'),
-      faceapi.nets.faceRecognitionNet.loadFromUri('/models'),
-      faceapi.nets.faceExpressionNet.loadFromUri('/models'),
+      faceapi.nets.tinyFaceDetector.loadFromUri('/imports/models'),
+      faceapi.nets.faceLandmark68Net.loadFromUri('/imports/models'),
+      faceapi.nets.faceRecognitionNet.loadFromUri('/imports/models'),
+      faceapi.nets.faceExpressionNet.loadFromUri('/imports/models'),
     ]).then(() => {
       const vid = this.videoTag.current.video;
       vid.addEventListener('play', () => {
@@ -131,7 +131,7 @@ class VideoListItem extends Component {
         setInterval(async () => {
           const detections = await faceapi.detectAllFaces(
             vid,
-            new faceapi.TinyFaceDetectorOptions()
+            new faceapi.TinyFaceDetectorOptions(),
           ).withFaceLandmarks().withFaceExpressions();
           const resizedDetections = faceapi.resizeResults(detections, displaySize);
           canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
