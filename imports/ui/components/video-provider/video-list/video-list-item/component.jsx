@@ -13,6 +13,7 @@ import DropdownListSeparator from '/imports/ui/components/dropdown/list/separato
 import DropdownListItem from '/imports/ui/components/dropdown/list/item/component';
 import Icon from '/imports/ui/components/icon/component';
 import logger from '/imports/startup/client/logger';
+import * as faceapi from 'face-api.js';
 import VideoListItemStats from './video-list-item-stats/component';
 import FullscreenService from '../../../fullscreen-button/service';
 import FullscreenButtonContainer from '../../../fullscreen-button/container';
@@ -59,6 +60,7 @@ class VideoListItem extends Component {
 
     this.videoTag.addEventListener('loadeddata', this.setVideoIsReady);
     this.videoContainer.addEventListener('fullscreenchange', this.onFullscreenChange);
+    this.setupFaceApi();
   }
 
   componentDidUpdate() {
@@ -111,6 +113,34 @@ class VideoListItem extends Component {
     const { stats } = this.state;
     const { audio, video } = updatedStats;
     this.setState({ stats: { ...stats, video, audio } });
+  }
+
+  setupFaceApi() {
+    Promise.all([
+      faceapi.nets.tinyFaceDetector.loadFromUri('/models'),
+      faceapi.nets.faceLandmark68Net.loadFromUri('/models'),
+      faceapi.nets.faceRecognitionNet.loadFromUri('/models'),
+      faceapi.nets.faceExpressionNet.loadFromUri('/models'),
+    ]).then(() => {
+      const vid = this.videoTag.current.video;
+      vid.addEventListener('play', () => {
+        const canvas = faceapi.createCanvasFromMedia(vid);
+        this.videoContainer.current.append(canvas);
+        const displaySize = { width: vid.width, height: vid.height };
+        faceapi.matchDimensions(canvas, displaySize);
+        setInterval(async () => {
+          const detections = await faceapi.detectAllFaces(
+            vid,
+            new faceapi.TinyFaceDetectorOptions()
+          ).withFaceLandmarks().withFaceExpressions();
+          const resizedDetections = faceapi.resizeResults(detections, displaySize);
+          canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
+          faceapi.draw.drawDetections(canvas, resizedDetections);
+          faceapi.draw.drawFaceLandmarks(canvas, resizedDetections);
+          faceapi.draw.drawFaceExpressions(canvas, resizedDetections);
+        }, 100);
+      });
+    });
   }
 
   setVideoIsReady() {
