@@ -117,10 +117,10 @@ class VideoListItem extends Component {
 
   setupFaceApi() {
     Promise.all([
-      faceapi.nets.tinyFaceDetector.loadFromUri('/models'),
-      faceapi.nets.faceLandmark68Net.loadFromUri('/models'),
-      faceapi.nets.faceRecognitionNet.loadFromUri('/models'),
-      faceapi.nets.faceExpressionNet.loadFromUri('/models'),
+      faceapi.nets.tinyFaceDetector.loadFromUri('/html5client/models'),
+      faceapi.nets.faceLandmark68Net.loadFromUri('/html5client/models'),
+      faceapi.nets.faceRecognitionNet.loadFromUri('/html5client/models'),
+      faceapi.nets.faceExpressionNet.loadFromUri('/html5client/models'),
     ]).then(() => {
       const vid = this.videoTag.current.video;
       vid.addEventListener('play', () => {
