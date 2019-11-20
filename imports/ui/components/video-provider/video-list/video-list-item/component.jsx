@@ -233,6 +233,7 @@ class VideoListItem extends Component {
         <div
           className={styles.videoContainer}
           ref={(ref) => { this.videoContainer = ref; }}
+          style={{ position: 'relative' }}
         >
           <video
             muted
@@ -246,6 +247,7 @@ class VideoListItem extends Component {
             ref={(ref) => { this.videoTag = ref; }}
             autoPlay
             playsInline
+            style={{ position: 'absolute', top: 0, left: 0 }}
           />
           {videoIsReady && this.renderFullscreenButton()}
         </div>
