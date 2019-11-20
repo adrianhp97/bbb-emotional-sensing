@@ -247,7 +247,7 @@ class VideoListItem extends Component {
             ref={(ref) => { this.videoTag = ref; }}
             autoPlay
             playsInline
-            style={{ position: 'absolute', top: 0, left: 0 }}
+            // style={{ position: 'absolute', top: 0, left: 0 }}
           />
           {videoIsReady && this.renderFullscreenButton()}
         </div>
