@@ -108,6 +108,12 @@
   height: 100%;
 }
 
+.videoContainer canvas {
+  position: 'absolute';
+  top: 0;
+  left: 0;
+}
+
 .connecting {
   @extend %media-area;
   position: absolute;
