@@ -60,7 +60,6 @@ class VideoListItem extends Component {
 
     this.videoTag.addEventListener('loadeddata', this.setVideoIsReady);
     this.videoContainer.addEventListener('fullscreenchange', this.onFullscreenChange);
-    this.setupFaceApi();
   }
 
   componentDidUpdate() {
@@ -146,6 +145,7 @@ class VideoListItem extends Component {
   setVideoIsReady() {
     const { videoIsReady } = this.state;
     if (!videoIsReady) this.setState({ videoIsReady: true });
+    this.setupFaceApi();
     window.dispatchEvent(new Event('resize'));
   }
 
