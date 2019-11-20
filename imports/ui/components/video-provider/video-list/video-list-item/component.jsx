@@ -121,24 +121,27 @@ class VideoListItem extends Component {
       faceapi.nets.faceRecognitionNet.loadFromUri('/html5client/models'),
       faceapi.nets.faceExpressionNet.loadFromUri('/html5client/models'),
     ]).then(() => {
-      const vid = this.videoTag.current.video;
-      vid.addEventListener('play', () => {
-        const canvas = faceapi.createCanvasFromMedia(vid);
-        this.videoContainer.current.append(canvas);
-        const displaySize = { width: vid.width, height: vid.height };
-        faceapi.matchDimensions(canvas, displaySize);
-        setInterval(async () => {
-          const detections = await faceapi.detectAllFaces(
-            vid,
-            new faceapi.TinyFaceDetectorOptions(),
-          ).withFaceLandmarks().withFaceExpressions();
-          const resizedDetections = faceapi.resizeResults(detections, displaySize);
-          canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
-          faceapi.draw.drawDetections(canvas, resizedDetections);
-          faceapi.draw.drawFaceLandmarks(canvas, resizedDetections);
-          faceapi.draw.drawFaceExpressions(canvas, resizedDetections);
-        }, 100);
-      });
+      const vid = this.videoTag;
+      console.log(vid);
+      //      vid.addEventListener('play', () => {
+      const canvas = faceapi.createCanvasFromMedia(vid);
+      console.log(canvas);
+      this.videoContainer.append(canvas);
+      console.log(this.videoContainer, vid.width, vid.height);
+      const displaySize = { width: vid.clientWidth, height: vid.clientHeight };
+      faceapi.matchDimensions(canvas, displaySize);
+      setInterval(async () => {
+        const detections = await faceapi.detectAllFaces(
+          vid,
+          new faceapi.TinyFaceDetectorOptions(),
+        ).withFaceLandmarks().withFaceExpressions();
+        const resizedDetections = faceapi.resizeResults(detections, displaySize);
+        canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
+        faceapi.draw.drawDetections(canvas, resizedDetections);
+        faceapi.draw.drawFaceLandmarks(canvas, resizedDetections);
+        faceapi.draw.drawFaceExpressions(canvas, resizedDetections);
+      }, 100);
+      //    });
     });
   }
 
