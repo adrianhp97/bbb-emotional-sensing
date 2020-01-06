@@ -22,19 +22,19 @@ import path from 'path';
 import util from 'util';
 const exec = util.promisify(child_process.exec);
 
-import index from '../imports/h5p/examples/index';
+import index from '/imports/h5p/examples/index';
 
-import examples from '../imports/h5p/examples/examples.json';
+import examples from '/imports/h5p/examples/examples.json';
 
 import * as h5pLib from 'h5p-nodejs-library';
 
-import DirectoryTemporaryFileStorage from '../imports/h5p/examples/implementation/DirectoryTemporaryFileStorage';
-import EditorConfig from '../imports/h5p/examples/implementation/EditorConfig';
-import FileContentStorage from '../imports/h5p/examples/implementation/FileContentStorage';
-import FileLibraryStorage from '../imports/h5p/examples/implementation/FileLibraryStorage';
-import InMemoryStorage from '../imports/h5p/examples/implementation/InMemoryStorage';
-import JsonStorage from '../imports/h5p/examples/implementation/JsonStorage';
-import User from '../imports/h5p/examples/implementation/User';
+import DirectoryTemporaryFileStorage from '/imports/h5p/examples/implementation/DirectoryTemporaryFileStorage';
+import EditorConfig from '/imports/h5p/examples/implementation/EditorConfig';
+import FileContentStorage from '/imports/h5p/examples/implementation/FileContentStorage';
+import FileLibraryStorage from '/imports/h5p/examples/implementation/FileLibraryStorage';
+import InMemoryStorage from '/imports/h5p/examples/implementation/InMemoryStorage';
+import JsonStorage from '/imports/h5p/examples/implementation/JsonStorage';
+import User from '/imports/h5p/examples/implementation/User';
 
 const AVAILABLE_LOCALES = fs.readdirSync('assets/app/locales');
 
