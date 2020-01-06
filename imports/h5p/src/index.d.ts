@@ -1,0 +1,10 @@
+import H5PEditor from './H5PEditor';
+import H5PPlayer from './H5PPlayer';
+import H5pError from './helpers/H5pError';
+import InstalledLibrary from './InstalledLibrary';
+import LibraryName from './LibraryName';
+import PackageExporter from './PackageExporter';
+import TranslationService from './TranslationService';
+import { ContentId, IContentMetadata, IContentStorage, IEditorConfig, IInstalledLibrary, IKeyValueStorage, ILibraryFileUrlResolver, ILibraryMetadata, ILibraryName, ILibraryStorage, ITemporaryFile, ITemporaryFileStorage, ITranslationService, IUser, Permission } from './types';
+import englishStrings from './translations/en.json';
+export { H5PEditor, H5pError, H5PPlayer, InstalledLibrary, LibraryName, PackageExporter, TranslationService, ContentId, IContentMetadata, IContentStorage, IEditorConfig, IInstalledLibrary, IKeyValueStorage, ILibraryFileUrlResolver, ILibraryMetadata, ILibraryName, ILibraryStorage, ITemporaryFile, ITemporaryFileStorage, ITranslationService, IUser, Permission, englishStrings };
