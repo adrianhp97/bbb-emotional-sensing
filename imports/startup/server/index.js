@@ -17,7 +17,6 @@ import bodyParser from 'body-parser';
 import child_process from 'child_process';
 import express from 'express';
 import fileUpload from 'express-fileupload';
-import fs from 'fs';
 
 import path from 'path';
 import util from 'util';
