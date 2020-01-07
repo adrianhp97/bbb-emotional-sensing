@@ -151,6 +151,7 @@ Meteor.startup(async () => {
   );
   
   const h5pRoute = '/h5p';
+  server.set('base', '/html5client');
   
   server.get(`${h5pRoute}/libraries/:uberName/:file(*)`, async (req, res) => {
     const stream = h5pEditor.libraryManager.getFileStream(
