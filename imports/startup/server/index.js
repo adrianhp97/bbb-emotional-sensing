@@ -193,7 +193,7 @@ Meteor.startup(async () => {
     }
   );
   
-  server.use(h5pRoute, express.static(`${path.resolve('')}/h5p`));
+  server.use(h5pRoute, express.static(`${path.resolve('html5client')}/h5p`));
   
   server.use('/favicon.ico', express.static(`favicon.ico`));
   
