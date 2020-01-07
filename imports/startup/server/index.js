@@ -211,12 +211,10 @@ Meteor.startup(async () => {
       return res.redirect('/html5client');
     }
   
-    const libraryLoader = (lib, maj, min) => {
+    const libraryLoader = (lib, maj, min) =>
       h5pEditor.libraryManager.loadLibrary(
         new h5pLib.LibraryName(lib, maj, min)
       );
-      console.log(lib, maj, min)
-    }
     Promise.all([
       h5pEditor.contentManager.loadContent(
         req.query.contentId,
