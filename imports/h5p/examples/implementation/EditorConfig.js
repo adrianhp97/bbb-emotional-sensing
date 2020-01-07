@@ -45,8 +45,8 @@ var EditorConfig = /** @class */ (function () {
      * @param {IStorage} storage A key-value storage object that persists the changes to the disk or gets them from the implementation/plugin
      */
     function EditorConfig(storage) {
-        this.ajaxPath = '/html5client/ajax?action=';
-        this.baseUrl = '/html5client/h5p';
+        this.ajaxPath = '/ajax?action=';
+        this.baseUrl = '/h5p';
         /**
          * Time after which the content type cache is considered to be outdated in milliseconds.
          * User-configurable.
@@ -81,7 +81,7 @@ var EditorConfig = /** @class */ (function () {
          * WARNING: Do not change the 'content' part of the URL, as the editor client assumes that it can find
          * content under this path!
          */
-        this.filesPath = '/html5client/h5p/content';
+        this.filesPath = '/h5p/content';
         /**
          * This is the version of the PHP implementation that the NodeJS implementation imitates.
          * It is sent to the H5P Hub when registering there.
@@ -102,7 +102,7 @@ var EditorConfig = /** @class */ (function () {
          * The EDITOR LIBRARY FILES are loaded from here (needed for the ckeditor), NOT
          * the libraries itself.
          */
-        this.libraryUrl = '/html5client/h5p/editor/';
+        this.libraryUrl = '/h5p/editor/';
         /**
          * A list of file extensions allowed for library files.
          * (All extensions allowed for content files are also automatically allowed for libraries).
