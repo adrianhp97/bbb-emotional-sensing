@@ -46,7 +46,7 @@ var EditorConfig = /** @class */ (function () {
      */
     function EditorConfig(storage) {
         this.ajaxPath = '/ajax?action=';
-        this.baseUrl = '/h5p';
+        this.baseUrl = '/html5client/h5p';
         /**
          * Time after which the content type cache is considered to be outdated in milliseconds.
          * User-configurable.
