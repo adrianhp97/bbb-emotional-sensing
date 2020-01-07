@@ -124,12 +124,12 @@ Meteor.startup(async () => {
     await new EditorConfig(
       new JsonStorage(path.resolve('config.json'))
     ).load(),
-    new FileLibraryStorage(path.resolve('html5client/h5p/libraries')),
-    new FileContentStorage(path.resolve('html5client/h5p/content')),
+    new FileLibraryStorage(path.resolve('h5p/libraries')),
+    new FileContentStorage(path.resolve('h5p/content')),
     new h5pLib.TranslationService(h5pLib.englishStrings),
     (library, file) =>
-    `html5client/${h5pRoute}/libraries/${library.machineName}-${library.majorVersion}.${library.minorVersion}/${file}`,
-    new DirectoryTemporaryFileStorage(path.resolve('html5client/h5p/temporary-storage'))
+    `${h5pRoute}/libraries/${library.machineName}-${library.majorVersion}.${library.minorVersion}/${file}`,
+    new DirectoryTemporaryFileStorage(path.resolve('h5p/temporary-storage'))
   );
   
   const user = new User();
@@ -193,7 +193,7 @@ Meteor.startup(async () => {
     }
   );
   
-  server.use(h5pRoute, express.static(`${path.resolve('html5client')}/h5p`));
+  server.use(h5pRoute, express.static(`${path.resolve('')}/h5p`));
   
   server.use('/favicon.ico', express.static(`favicon.ico`));
   
