@@ -128,7 +128,7 @@ Meteor.startup(async () => {
     new FileContentStorage(path.resolve('h5p/content')),
     new h5pLib.TranslationService(h5pLib.englishStrings),
     (library, file) =>
-    `${h5pRoute}/libraries/${library.machineName}-${library.majorVersion}.${library.minorVersion}/${file}`,
+    `html5client/${h5pRoute}/libraries/${library.machineName}-${library.majorVersion}.${library.minorVersion}/${file}`,
     new DirectoryTemporaryFileStorage(path.resolve('h5p/temporary-storage'))
   );
   
