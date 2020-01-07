@@ -212,6 +212,7 @@ Meteor.startup(async () => {
     }
   
     const libraryLoader = (lib, maj, min) =>
+      console.log(lib, maj, min)
       h5pEditor.libraryManager.loadLibrary(
         new h5pLib.LibraryName(lib, maj, min)
       );
